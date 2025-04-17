@@ -11,6 +11,9 @@
   text-align: right;
   border-bottom: 1px solid #6c48bb;
 }
+.sidebar-icon {
+  margin-left: 0.5rem;
+}
 .sidebar-links {
   margin-top: 20px;
 }
