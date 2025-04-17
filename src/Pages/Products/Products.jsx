@@ -6,8 +6,8 @@ import AddNewProduct from "../../Components/AddNewProduct/AddNewProduct";
 export default function Products() {
   return (
     <div>
-      <ErrorBox msg="هیچ محصولی یافت نشد !" />
       <AddNewProduct />
+      <ErrorBox msg="هیچ محصولی یافت نشد !" />
     </div>
   );
 }
