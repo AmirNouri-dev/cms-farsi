@@ -7,6 +7,7 @@ import { FiUsers } from "react-icons/fi";
 import { BsBagCheck } from "react-icons/bs";
 import { MdOutlineDiscount } from "react-icons/md";
 import { FiBarChart2 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
@@ -14,46 +15,46 @@ export default function Sidebar() {
       <h1 className="sidebar-title">به داشبورد خود خوش آمدید</h1>
       <ul className="sidebar-links">
         <li>
-          <a href="#">
+          <Link to="/">
             <AiOutlineHome className="sidebar-icon" />
             صفحه اصلی
-          </a>
+          </Link>
         </li>
         <li className="active">
-          <a href="#">
+          <Link to="/products">
             <AiOutlineProduct className="sidebar-icon" />
             محصولات
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="/comments">
             <TfiCommentAlt className="sidebar-icon" />
             کامنت ها
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="/users">
             <FiUsers className="sidebar-icon" />
             کاربران
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="/orders">
             <BsBagCheck className="sidebar-icon" />
             سفارشات
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="/offs">
             <MdOutlineDiscount className="sidebar-icon" />
             تخفیف ها
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="/statistics">
             <FiBarChart2 className="sidebar-icon" />
             آمار فروش
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
