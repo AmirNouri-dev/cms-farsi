@@ -62,8 +62,6 @@ button {
   width: 100%;
 }
 .search-box button {
-  /*padding-left: 20px;
-  */
   display: flex;
   font-size: 1.1rem;
   width: 150px;
