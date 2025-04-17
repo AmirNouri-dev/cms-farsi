@@ -1,17 +1,19 @@
 @import "./reset.css";
 
 @font-face {
-  font-family: lalehzar;
-  src: url(./fonts/Lalezar-Regular.ttf) format("ttf");
+  font-family: lalezar;
+  src: url(./fonts/Lalezar-Regular.ttf);
 }
 :root {
   --white: #ffffff;
   --white-50: #f0f0f0;
   --blue: #471aaa;
-  --blue-50: #220d4e;
+  --blue-50: #391588;
 }
 body {
   background-color: var(--white-50);
+  direction: rtl;
+  display: flex;
 }
 *,
 body,
