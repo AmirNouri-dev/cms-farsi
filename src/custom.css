@@ -10,6 +10,7 @@
   --blue: #471aaa;
   --blue-50: #391588;
   --gray: #858585;
+  --red-error: #ff4f4f;
 }
 body {
   background-color: var(--white-50);
