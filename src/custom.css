@@ -1,3 +1,5 @@
+@import "./reset.css";
+
 @font-face {
   font-family: lalehzar;
   src: url(./fonts/Lalezar-Regular.ttf) format("ttf");
