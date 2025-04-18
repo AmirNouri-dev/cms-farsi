@@ -12,12 +12,14 @@
   --gray: #858585;
   --red-error: #ff4f4f;
 }
-#root {
+/* #root {
   display: flex;
   direction: rtl;
-}
+} */
 body {
   background-color: var(--white-50);
+  display: flex;
+  direction: rtl;
 }
 *,
 body,
