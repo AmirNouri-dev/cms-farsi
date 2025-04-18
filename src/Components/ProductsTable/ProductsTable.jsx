@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ProductsTable.css";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import DetailsModal from "../DetailsModal/DetailsModal";
 
 export default function ProductsTable() {
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
@@ -51,6 +52,7 @@ export default function ProductsTable() {
       {isShowDeleteModal && (
         <DeleteModal submitAction={submitAction} cancelAction={cancelAction} />
       )}
+      <DetailsModal></DetailsModal>
     </>
   );
 }
