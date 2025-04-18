@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ProductsTable.css";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import DetailsModal from "../DetailsModal/DetailsModal";
+import EditModal from "../EditModal/EditModal";
 
 export default function ProductsTable() {
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
@@ -65,6 +66,7 @@ export default function ProductsTable() {
       {isShowDetailsModal && (
         <DetailsModal onClick={closeDetailsModal} onHide={closeDetailsModal} />
       )}
+      <EditModal />
     </>
   );
 }
