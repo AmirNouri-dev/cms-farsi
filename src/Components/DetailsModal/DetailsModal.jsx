@@ -32,10 +32,7 @@ export default function DetailsModal({ onHide, onClick }) {
           </tbody>
         </table>
         <div className="detail-btn-container">
-          <button
-            className="detail-btn detail-modal-accept-btn"
-            onClick={() => onClick()}
-          >
+          <button className="detail-confirm-btn" onClick={() => onClick()}>
             باشه
             <p>
               press <span>Esc</span> on keyboard{" "}

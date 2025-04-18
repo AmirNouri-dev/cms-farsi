@@ -8,13 +8,13 @@ export default function DeleteModal({ submitAction, cancelAction }) {
         <h1>آیا از حذف اطمینان دارید؟</h1>
         <div className="delete-modal-btns">
           <button
-            className="delete-btn detele-modal-accept-btn"
+            className="delete-btn delete-modal-accept-btn"
             onClick={() => submitAction()}
           >
             بله
           </button>
           <button
-            className="detail-btn detail-modal-close-btn"
+            className="delete-btn delete-modal-close-btn"
             onClick={() => cancelAction()}
           >
             خیر

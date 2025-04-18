@@ -42,7 +42,7 @@
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
 }
-.detele-modal-accept-btn {
+.delete-modal-accept-btn {
   color: var(--white);
   background-color: var(--blue);
   width: 100%;

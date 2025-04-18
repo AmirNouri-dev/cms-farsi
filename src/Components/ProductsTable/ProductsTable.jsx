@@ -7,6 +7,7 @@ import EditModal from "../EditModal/EditModal";
 export default function ProductsTable() {
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
+  const [isShowEditsModal, setIsShowEditsModal] = useState(false);
   const submitAction = () => {
     console.log("حذف تایید شد");
     setIsShowDeleteModal(false);
@@ -66,7 +67,7 @@ export default function ProductsTable() {
       {isShowDetailsModal && (
         <DetailsModal onClick={closeDetailsModal} onHide={closeDetailsModal} />
       )}
-      <EditModal />
+      {isShowEditsModal && <EditModal />}
     </>
   );
 }
