@@ -62,7 +62,9 @@ export default function ProductsTable() {
       {isShowDeleteModal && (
         <DeleteModal submitAction={submitAction} cancelAction={cancelAction} />
       )}
-      {isShowDetailsModal && <DetailsModal onHide={closeDetailsModal} />}
+      {isShowDetailsModal && (
+        <DetailsModal onClick={closeDetailsModal} onHide={closeDetailsModal} />
+      )}
     </>
   );
 }

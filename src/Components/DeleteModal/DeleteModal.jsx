@@ -14,7 +14,7 @@ export default function DeleteModal({ submitAction, cancelAction }) {
             بله
           </button>
           <button
-            className="delete-btn detele-modal-reject-btn"
+            className="detail-btn detail-modal-close-btn"
             onClick={() => cancelAction()}
           >
             خیر

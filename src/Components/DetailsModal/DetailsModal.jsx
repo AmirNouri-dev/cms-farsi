@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./DetailsModal.css";
-export default function DetailsModal({ onHide }) {
+export default function DetailsModal({ onHide, onClick }) {
   useEffect(() => {
     const checkKey = (event) => {
       if (event.keyCode === 27) {
@@ -31,6 +31,17 @@ export default function DetailsModal({ onHide }) {
             </tr>
           </tbody>
         </table>
+        <div className="detail-btn-container">
+          <button
+            className="detail-btn detail-modal-accept-btn"
+            onClick={() => onClick()}
+          >
+            باشه
+            <p>
+              press <span>Esc</span> on keyboard{" "}
+            </p>
+          </button>
+        </div>
       </div>
     </div>
   );
