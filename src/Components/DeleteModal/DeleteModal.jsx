@@ -1,0 +1,15 @@
+import React from "react";
+import "./DeleteModal.css";
+export default function DeleteModal() {
+  return (
+    <div className="modal-parent active">
+      <div className="delete-modal">
+        <h1>آیا از حذف اطمینان دارید؟</h1>
+        <div className="delete-modal-btns">
+          <button className="delete-btn detele-modal-accept-btn">بله</button>
+          <button className="delete-btn detele-modal-reject-btn">خیر</button>
+        </div>
+      </div>
+    </div>
+  );
+}
