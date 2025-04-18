@@ -3,6 +3,7 @@ import "./ProductsTable.css";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import DetailsModal from "../DetailsModal/DetailsModal";
 import EditModal from "../EditModal/EditModal";
+import { AiFillEdit } from "react-icons/ai";
 
 export default function ProductsTable() {
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
@@ -83,7 +84,48 @@ export default function ProductsTable() {
         <DetailsModal onClick={closeDetailsModal} onHide={closeDetailsModal} />
       )}
       {isShowEditsModal && (
-        <EditModal onSubmit={editmodalInfos} onClose={closeEditModal} />
+        <EditModal onSubmit={editmodalInfos} onClose={closeEditModal}>
+          <div className="edit-products-form-group">
+            <span>
+              <AiFillEdit />
+            </span>
+            <input
+              type="text"
+              placeholder="عنوان جدید را وارد نمایید"
+              className="edit-product-input"
+            />
+          </div>
+          <div className="edit-products-form-group">
+            <span>
+              <AiFillEdit />
+            </span>
+            <input
+              type="text"
+              placeholder="عنوان جدید را وارد نمایید"
+              className="edit-product-input"
+            />
+          </div>
+          <div className="edit-products-form-group">
+            <span>
+              <AiFillEdit />
+            </span>
+            <input
+              type="text"
+              placeholder="عنوان جدید را وارد نمایید"
+              className="edit-product-input"
+            />
+          </div>
+          <div className="edit-products-form-group">
+            <span>
+              <AiFillEdit />
+            </span>
+            <input
+              type="text"
+              placeholder="عنوان جدید را وارد نمایید"
+              className="edit-product-input"
+            />
+          </div>
+        </EditModal>
       )}
     </>
   );
