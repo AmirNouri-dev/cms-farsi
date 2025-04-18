@@ -5,6 +5,7 @@ import DetailsModal from "../DetailsModal/DetailsModal";
 
 export default function ProductsTable() {
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
+  const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
   const submitAction = () => {
     console.log("حذف تایید شد");
     setIsShowDeleteModal(false);
@@ -12,6 +13,10 @@ export default function ProductsTable() {
   const cancelAction = () => {
     console.log("حذف تایید نشد");
     setIsShowDeleteModal(false);
+  };
+  const closeDetailsModal = () => {
+    console.log("مودال جزییات بسته شد");
+    setIsShowDetailsModal(false);
   };
   return (
     <>
@@ -37,7 +42,12 @@ export default function ProductsTable() {
             <td>230.000 تومان</td>
             <td>65 عدد</td>
             <td>
-              <button className="products-table-btn">جزییات</button>
+              <button
+                className="products-table-btn"
+                onClick={() => setIsShowDetailsModal(true)}
+              >
+                جزییات
+              </button>
               <button
                 className="products-table-btn"
                 onClick={() => setIsShowDeleteModal(true)}
@@ -52,7 +62,7 @@ export default function ProductsTable() {
       {isShowDeleteModal && (
         <DeleteModal submitAction={submitAction} cancelAction={cancelAction} />
       )}
-      <DetailsModal></DetailsModal>
+      {isShowDetailsModal && <DetailsModal onHide={closeDetailsModal} />}
     </>
   );
 }
