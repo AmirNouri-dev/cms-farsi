@@ -12,10 +12,15 @@
 .edit-modal-form h1 {
   font-size: 1.6rem;
 }
+.edit-modal-btns-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 40px;
+}
 .edit-form-submit-btn {
   margin-top: 20px;
-  background-color: var(--blue);
-  color: var(--white);
+  width: 100%;
   border: 0.5px solid var(--gray);
   font-size: 1.2rem;
   padding: 6px 10px;
@@ -29,6 +34,10 @@
   -moz-transition: 250ms;
   -ms-transition: 250ms;
   -o-transition: 250ms;
+}
+.edit-form-submit-btn:nth-child(1) {
+  background-color: var(--blue);
+  color: var(--white);
 }
 .edit-form-submit-btn:hover {
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);

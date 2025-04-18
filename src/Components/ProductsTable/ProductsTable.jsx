@@ -20,6 +20,16 @@ export default function ProductsTable() {
     console.log("مودال جزییات بسته شد");
     setIsShowDetailsModal(false);
   };
+  const editmodalInfos = (event) => {
+    event.preventDefault();
+    console.log("اطلاعات ویرایش شد");
+    setIsShowEditsModal(false);
+  };
+  const closeEditModal = (event) => {
+    event.preventDefault();
+    console.log("مودال ویرایش بسته شد");
+    setIsShowEditsModal(false);
+  };
   return (
     <>
       <table className="products-table">
@@ -56,7 +66,12 @@ export default function ProductsTable() {
               >
                 حذف
               </button>
-              <button className="products-table-btn">ویرایش</button>
+              <button
+                className="products-table-btn"
+                onClick={() => setIsShowEditsModal(true)}
+              >
+                ویرایش
+              </button>
             </td>
           </tr>
         </tbody>
@@ -67,7 +82,9 @@ export default function ProductsTable() {
       {isShowDetailsModal && (
         <DetailsModal onClick={closeDetailsModal} onHide={closeDetailsModal} />
       )}
-      {isShowEditsModal && <EditModal />}
+      {isShowEditsModal && (
+        <EditModal onSubmit={editmodalInfos} onClose={closeEditModal} />
+      )}
     </>
   );
 }

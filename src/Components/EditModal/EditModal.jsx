@@ -8,7 +8,14 @@ export default function EditModal({ onSubmit, onClose, children }) {
         <h1>لطفاً اطلاعات جدید را وارد نمایید</h1>
 
         {children}
-        <button className="edit-form-submit-btn">ثبت اطلاعات جدید</button>
+        <div className="edit-modal-btns-container">
+          <button className="edit-form-submit-btn" onClick={onSubmit}>
+            ثبت اطلاعات جدید
+          </button>
+          <button className="edit-form-submit-btn" onClick={onClose}>
+            بستن
+          </button>
+        </div>
       </form>
     </div>
   );
