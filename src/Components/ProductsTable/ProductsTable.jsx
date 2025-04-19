@@ -13,6 +13,14 @@ export default function ProductsTable() {
   const [allProducts, setAllProducts] = useState([]);
   const [productID, setProductID] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState([]);
+  /*برای هر اینپوت نیاز به یک استیت داریم */
+  const [productNewTitle, setProductNewTitle] = useState("");
+  const [productNewPrice, setProductNewPrice] = useState("");
+  const [productNewImg, setProductNewImg] = useState("");
+  const [productNewCount, setProductNewCount] = useState("");
+  const [productNewPopularity, setProductNewPopularity] = useState("");
+  const [productNewSale, setProductNewSale] = useState("");
+  const [productNewColors, setProductNewColors] = useState("");
 
   useEffect(() => {
     getAllProducts();
@@ -51,8 +59,30 @@ export default function ProductsTable() {
   };
   const editmodalInfos = (event) => {
     event.preventDefault();
-    console.log("اطلاعات ویرایش شد");
-    setIsShowEditsModal(false);
+    const newProductInfos = {
+      title: productNewTitle,
+      price: productNewPrice,
+      count: productNewCount,
+      colors: productNewColors,
+      popularity: productNewPopularity,
+      img: productNewImg,
+      sale: productNewSale,
+    };
+    fetch(`http://localhost:8000/api/products/${productID}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newProductInfos),
+    })
+      .then((res) => {
+        console.log(res);
+        res.json();
+      })
+      .then((result) => {
+        console.log(result);
+        console.log("اطلاعات ویرایش شد");
+        getAllProducts();
+        setIsShowEditsModal(false);
+      });
   };
   const closeEditModal = (event) => {
     event.preventDefault();
@@ -105,7 +135,17 @@ export default function ProductsTable() {
                   </button>
                   <button
                     className="products-table-btn"
-                    onClick={() => setIsShowEditsModal(true)}
+                    onClick={() => {
+                      setIsShowEditsModal(true);
+                      setProductID(product.id);
+                      setProductNewTitle(product.title);
+                      setProductNewPrice(product.price);
+                      setProductNewImg(product.img);
+                      setProductNewCount(product.count);
+                      setProductNewPopularity(product.popularity);
+                      setProductNewSale(product.sale);
+                      setProductNewColors(product.colors);
+                    }}
                   >
                     ویرایش
                   </button>
@@ -147,41 +187,92 @@ export default function ProductsTable() {
           <div className="edit-products-form-group">
             <span>
               <AiFillEdit />
+              عنوان:
             </span>
             <input
               type="text"
               placeholder="عنوان جدید را وارد نمایید"
               className="edit-product-input"
+              value={productNewTitle}
+              onChange={() => setProductNewTitle(event.target.value)}
             />
           </div>
           <div className="edit-products-form-group">
             <span>
               <AiFillEdit />
+              قیمت:
             </span>
             <input
               type="text"
-              placeholder="عنوان جدید را وارد نمایید"
+              placeholder="قیمت جدید را وارد نمایید"
               className="edit-product-input"
+              value={productNewPrice}
+              onChange={() => setProductNewPrice(event.target.value)}
             />
           </div>
           <div className="edit-products-form-group">
             <span>
               <AiFillEdit />
+              آدرس عکس:
             </span>
             <input
               type="text"
-              placeholder="عنوان جدید را وارد نمایید"
+              placeholder="آدرس عکس جدید را وارد نمایید"
               className="edit-product-input"
+              value={productNewImg}
+              onChange={() => setProductNewImg(event.target.value)}
             />
           </div>
           <div className="edit-products-form-group">
             <span>
               <AiFillEdit />
+              موجودی:
             </span>
             <input
               type="text"
-              placeholder="عنوان جدید را وارد نمایید"
+              placeholder="موجودی جدید را وارد نمایید"
               className="edit-product-input"
+              value={productNewCount}
+              onChange={() => setProductNewCount(event.target.value)}
+            />
+          </div>
+          <div className="edit-products-form-group">
+            <span>
+              <AiFillEdit />
+              محبوبیت:
+            </span>
+            <input
+              type="text"
+              placeholder="محبوبیت جدید را وارد نمایید"
+              className="edit-product-input"
+              value={productNewPopularity}
+              onChange={() => setProductNewPopularity(event.target.value)}
+            />
+          </div>
+          <div className="edit-products-form-group">
+            <span>
+              <AiFillEdit />
+              فروش ماهانه:
+            </span>
+            <input
+              type="text"
+              placeholder="میزان فروش ماهانه جدید را وارد نمایید"
+              className="edit-product-input"
+              value={productNewSale}
+              onChange={() => setProductNewSale(event.target.value)}
+            />
+          </div>
+          <div className="edit-products-form-group">
+            <span>
+              <AiFillEdit />
+              رنگ بندی:
+            </span>
+            <input
+              type="text"
+              placeholder="تعداد رنگ بندی جدید را وارد نمایید"
+              className="edit-product-input"
+              value={productNewColors}
+              onChange={() => setProductNewColors(event.target.value)}
             />
           </div>
         </EditModal>

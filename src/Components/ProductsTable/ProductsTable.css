@@ -67,7 +67,9 @@
   -o-border-radius: 8px;
 }
 .edit-products-form-group span {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  width: 50%;
+  color: var(--gray);
   display: flex;
 }
 .edit-product-input {
