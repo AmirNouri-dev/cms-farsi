@@ -47,3 +47,13 @@
   justify-content: center;
   column-gap: 10px;
 }
+.comment-body-text {
+  font-size: 1.1rem;
+  max-width: 90%;
+  min-width: 90%;
+  height: 30vh;
+  margin-top: 20px;
+  align-self: center;
+  outline: none;
+  border: 1px solid var(--blue);
+}

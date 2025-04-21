@@ -3,11 +3,14 @@ import "./CommentsTable.css";
 import ErrorBox from "../ErrorBox/ErrorBox";
 import DetailsModal from "../DetailsModal/DetailsModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import EditModal from "../EditModal/EditModal";
 export default function CommentsTable() {
   const [allComments, setAllComments] = useState([]);
-  const [selectedComment, setSelectedComment] = useState([]);
+  const [selectedCommentID, setSelectedCommentID] = useState(null);
+  const [selectedCommentBody, setSelectedCommentBody] = useState("");
   const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
+  const [isShowEditModal, setIsShowEditModal] = useState(false);
 
   useEffect(() => {
     getAllProducts();
@@ -32,7 +35,7 @@ export default function CommentsTable() {
   };
   const deleteComment = () => {
     // let cid = selectedComment.id;
-    fetch(`http://localhost:8000/api/comments/${selectedComment.id}`, {
+    fetch(`http://localhost:8000/api/comments/${selectedCommentID}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -40,6 +43,26 @@ export default function CommentsTable() {
         console.log(data);
         getAllProducts();
         closeDeleteModal();
+      });
+  };
+
+  const closeEditModal = () => {
+    setIsShowEditModal(false);
+  };
+  const editComment = () => {
+    event.preventDefault();
+    const newCommentBody = {
+      body: selectedCommentBody,
+    };
+    fetch(`http://localhost:8000/api/comments/${selectedCommentID}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newCommentBody),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        getAllProducts();
+        closeEditModal();
       });
   };
   return (
@@ -68,7 +91,7 @@ export default function CommentsTable() {
                         className="cms-show-btn"
                         onClick={() => {
                           showComment();
-                          setSelectedComment(comment);
+                          setSelectedCommentBody(comment.body);
                         }}
                       >
                         دیدن متن
@@ -77,11 +100,19 @@ export default function CommentsTable() {
                     <td>{comment.date}</td>
                     <td>{comment.hour}</td>
                     <td>
-                      <button>ویرایش</button>
+                      <button
+                        onClick={() => {
+                          setIsShowEditModal(true);
+                          setSelectedCommentID(comment.id);
+                          setSelectedCommentBody(comment.body);
+                        }}
+                      >
+                        ویرایش
+                      </button>
                       <button
                         onClick={() => {
                           setIsShowDeleteModal(true);
-                          setSelectedComment(comment);
+                          setSelectedCommentID(comment.id);
                         }}
                       >
                         حذف
@@ -100,7 +131,7 @@ export default function CommentsTable() {
       )}
       {isShowDetailsModal && (
         <DetailsModal onClick={closeDetailsModal} onHide={closeDetailsModal}>
-          <p>{selectedComment.body}</p>
+          <p>{selectedCommentBody}</p>
         </DetailsModal>
       )}
       {isShowDeleteModal && (
@@ -108,6 +139,18 @@ export default function CommentsTable() {
           submitAction={deleteComment}
           cancelAction={closeDeleteModal}
         />
+      )}
+      {isShowEditModal && (
+        <EditModal onSubmit={editComment} onClose={closeEditModal}>
+          <div>
+            <textarea
+              className="comment-body-text"
+              type="text"
+              value={selectedCommentBody}
+              onChange={(event) => setSelectedCommentBody(event.target.value)}
+            ></textarea>
+          </div>
+        </EditModal>
       )}
     </>
   );
