@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./CommentsTable.css";
 import ErrorBox from "../ErrorBox/ErrorBox";
+import DetailsModal from "../DetailsModal/DetailsModal";
 export default function CommentsTable() {
   const [allComments, setAllComments] = useState([]);
+  const [selectedComment, setSelectedComment] = useState([]);
+  const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:8000/api/comments")
@@ -11,6 +14,13 @@ export default function CommentsTable() {
       .catch((err) => setAllComments([]));
   }, []);
 
+  const showComment = () => {
+    setIsShowDetailsModal(true);
+  };
+
+  const closeDetailsModal = () => {
+    setIsShowDetailsModal(false);
+  };
   return (
     <>
       {allComments.length ? (
@@ -33,7 +43,15 @@ export default function CommentsTable() {
                     <td>{comment.userID}</td>
                     <td>{comment.productID}</td>
                     <td>
-                      <button className="cms-show-btn">دیدن متن</button>
+                      <button
+                        className="cms-show-btn"
+                        onClick={() => {
+                          showComment();
+                          setSelectedComment(comment);
+                        }}
+                      >
+                        دیدن متن
+                      </button>
                     </td>
                     <td>{comment.date}</td>
                     <td>{comment.hour}</td>
@@ -51,6 +69,11 @@ export default function CommentsTable() {
         </div>
       ) : (
         <ErrorBox msg="هیچ کامنتی یافت نشد !" />
+      )}
+      {isShowDetailsModal && (
+        <DetailsModal onClick={closeDetailsModal} onHide={closeDetailsModal}>
+          <p>{selectedComment.body}</p>
+        </DetailsModal>
       )}
     </>
   );
