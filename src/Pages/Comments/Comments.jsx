@@ -7,7 +7,6 @@ export default function Comments() {
   return (
     <div>
       <CommentsTable />
-      <ErrorBox msg="هیچ کامنتی یافت نشد !" />
     </div>
   );
 }
