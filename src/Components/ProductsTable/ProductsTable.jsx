@@ -6,11 +6,11 @@ import EditModal from "../EditModal/EditModal";
 import { AiFillEdit } from "react-icons/ai";
 import ErrorBox from "./../ErrorBox/ErrorBox";
 
-export default function ProductsTable() {
+export default function ProductsTable({ allProducts, getAllProducts }) {
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
   const [isShowEditsModal, setIsShowEditsModal] = useState(false);
-  const [allProducts, setAllProducts] = useState([]);
+  // const [allProducts, setAllProducts] = useState([]);
   const [productID, setProductID] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState([]);
   /*برای هر اینپوت نیاز به یک استیت داریم */
@@ -22,22 +22,22 @@ export default function ProductsTable() {
   const [productNewSale, setProductNewSale] = useState("");
   const [productNewColors, setProductNewColors] = useState("");
 
-  useEffect(() => {
-    getAllProducts();
-  }, []);
+  // useEffect(() => {
+  //   getAllProducts();
+  // }, []);
 
-  const getAllProducts = () => {
-    fetch(`http://localhost:8000/api/products`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setAllProducts(data);
-      })
-      .catch((err) => {
-        setAllProducts([]);
-        console.log(err);
-      });
-  };
+  // const getAllProducts = () => {
+  //   fetch(`http://localhost:8000/api/products`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setAllProducts(data);
+  //     })
+  //     .catch((err) => {
+  //       setAllProducts([]);
+  //       console.log(err);
+  //     });
+  // };
   const submitAction = () => {
     fetch(`http://localhost:8000/api/products/${productID}`, {
       method: "DELETE",
