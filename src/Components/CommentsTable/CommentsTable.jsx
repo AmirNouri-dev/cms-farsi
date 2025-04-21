@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./CommentsTable.css";
 export default function CommentsTable() {
+  const [allComments, setAllComments] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/api/comments")
+      .then((res) => res.json())
+      .then((data) => setAllComments(data))
+      .catch((err) => setAllComments([]));
+  }, []);
+
   return (
     <div className="cms-main">
       <div className="cms-table">
@@ -16,21 +25,23 @@ export default function CommentsTable() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>علی</td>
-              <td>ایفون</td>
-              <td>
-                <button className="cms-show-btn">دیدن متن</button>
-              </td>
-              <td>2000</td>
-              <td>2000</td>
-              <td>
-                <button>ویرایش</button>
-                <button>حذف</button>
-                <button>پاسخ</button>
-                <button>تایید</button>
-              </td>
-            </tr>
+            {allComments.map((comment) => (
+              <tr key={comment.id}>
+                <td>{comment.userID}</td>
+                <td>{comment.productID}</td>
+                <td>
+                  <button className="cms-show-btn">دیدن متن</button>
+                </td>
+                <td>{comment.date}</td>
+                <td>{comment.hour}</td>
+                <td>
+                  <button>ویرایش</button>
+                  <button>حذف</button>
+                  <button>پاسخ</button>
+                  <button>تایید</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

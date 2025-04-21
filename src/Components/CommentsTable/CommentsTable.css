@@ -2,25 +2,27 @@
   margin-top: 60px;
   padding: 20px;
   border-radius: 5px;
+  background-color: var(--white);
 }
 .cms-table {
   width: 100%;
   padding: 30px 20px 20px;
-  background-color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+
   border-radius: 5px;
 }
 .cms-table thead {
   margin-top: 20px;
 }
+.cms-table th,
+.cms-table td {
+  padding: 20px;
+}
 .cms-table th {
   font-size: 1.1rem;
-  padding: 20px;
 }
 .cms-show-btn {
   width: 100% !important;
+  font-size: 0.8rem !important;
 }
 .cms-main button {
   display: flex;
