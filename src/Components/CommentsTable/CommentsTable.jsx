@@ -2,17 +2,23 @@ import React, { useEffect, useState } from "react";
 import "./CommentsTable.css";
 import ErrorBox from "../ErrorBox/ErrorBox";
 import DetailsModal from "../DetailsModal/DetailsModal";
+import DeleteModal from "../DeleteModal/DeleteModal";
 export default function CommentsTable() {
   const [allComments, setAllComments] = useState([]);
   const [selectedComment, setSelectedComment] = useState([]);
   const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
+  const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
 
   useEffect(() => {
+    getAllProducts();
+  }, []);
+
+  const getAllProducts = () => {
     fetch("http://localhost:8000/api/comments")
       .then((res) => res.json())
       .then((data) => setAllComments(data))
       .catch((err) => setAllComments([]));
-  }, []);
+  };
 
   const showComment = () => {
     setIsShowDetailsModal(true);
@@ -20,6 +26,21 @@ export default function CommentsTable() {
 
   const closeDetailsModal = () => {
     setIsShowDetailsModal(false);
+  };
+  const closeDeleteModal = () => {
+    setIsShowDeleteModal(false);
+  };
+  const deleteComment = () => {
+    // let cid = selectedComment.id;
+    fetch(`http://localhost:8000/api/comments/${selectedComment.id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        getAllProducts();
+        closeDeleteModal();
+      });
   };
   return (
     <>
@@ -57,7 +78,14 @@ export default function CommentsTable() {
                     <td>{comment.hour}</td>
                     <td>
                       <button>ویرایش</button>
-                      <button>حذف</button>
+                      <button
+                        onClick={() => {
+                          setIsShowDeleteModal(true);
+                          setSelectedComment(comment);
+                        }}
+                      >
+                        حذف
+                      </button>
                       <button>پاسخ</button>
                       <button>تایید</button>
                     </td>
@@ -74,6 +102,12 @@ export default function CommentsTable() {
         <DetailsModal onClick={closeDetailsModal} onHide={closeDetailsModal}>
           <p>{selectedComment.body}</p>
         </DetailsModal>
+      )}
+      {isShowDeleteModal && (
+        <DeleteModal
+          submitAction={deleteComment}
+          cancelAction={closeDeleteModal}
+        />
       )}
     </>
   );
