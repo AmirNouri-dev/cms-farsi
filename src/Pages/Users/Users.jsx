@@ -1,11 +1,11 @@
 import React from "react";
 import "./Users.css";
-import ErrorBox from "../../Components/ErrorBox/ErrorBox";
+import UsersList from "../../Components/UsersList/UsersList";
 
 export default function Users() {
   return (
     <div>
-      <ErrorBox msg="هیچ کاربری یافت نشد !" />
+      <UsersList />
     </div>
   );
 }
