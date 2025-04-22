@@ -4,12 +4,15 @@ import ErrorBox from "../ErrorBox/ErrorBox";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import EditModal from "../EditModal/EditModal";
 import { AiFillEdit } from "react-icons/ai";
+import DetailsModal from "../DetailsModal/DetailsModal";
 
 export default function UsersList() {
   const [users, setUsers] = useState([]);
   const [selectedUserID, setSelectedUserID] = useState(null);
+  const [selectedUser, setSelectedUser] = useState({});
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
+  const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
   const [userNewFirstName, setUserNewFirstName] = useState("");
   const [userNewLastName, setUserNewLastName] = useState("");
   const [userNewUserName, setUserNewUserName] = useState("");
@@ -91,6 +94,7 @@ export default function UsersList() {
         emptyInput();
       });
   };
+  const closeDetailsModal = () => setIsShowDetailsModal(false);
   return (
     <>
       <h2 className="users-title">لیست کاربران</h2>
@@ -120,10 +124,17 @@ export default function UsersList() {
                   <td className="users-table-body-td">{user.email}</td>
                   <td className="users-table-body-td">{user.phone}</td>
                   <td className="users-table-body-td users-table-body-td-btn">
-                    <button>جزییات</button>
                     <button
                       onClick={() => {
-                        setIsShowDeleteModal(true);
+                        setIsShowDetailsModal(true);
+                        setSelectedUser(user);
+                      }}
+                    >
+                      جزییات
+                    </button>
+                    <button
+                      onClick={() => {
+                        setIsShowDetailsModal(true);
                         setSelectedUserID(user.id);
                       }}
                     >
@@ -297,6 +308,28 @@ export default function UsersList() {
             />
           </div>
         </EditModal>
+      )}
+      {isShowDetailsModal && (
+        <DetailsModal onClick={closeDetailsModal} onHide={closeDetailsModal}>
+          <table className="cms-table">
+            <thead>
+              <tr>
+                <th>شهر</th>
+                <th>آدرس</th>
+                <th>امتیاز</th>
+                <th>میزان خرید</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>{selectedUser.city}</th>
+                <th>{selectedUser.address}</th>
+                <th>{selectedUser.score}</th>
+                <th>{selectedUser.buy.toLocaleString("fa-IR")} تومان</th>
+              </tr>
+            </tbody>
+          </table>
+        </DetailsModal>
       )}
     </>
   );
