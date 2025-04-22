@@ -23,7 +23,7 @@ export default function Sidebar() {
             صفحه اصلی
           </NavLink>
         </li>
-        <li className="active">
+        <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active li" : "li")}
             to="/products"
