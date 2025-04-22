@@ -91,6 +91,7 @@ export default function ProductsTable({ allProducts, getAllProducts }) {
   };
   return (
     <>
+      <h2 className="products-list-title">لیست محصولات</h2>
       {allProducts.length ? (
         <table className="products-table">
           <thead>

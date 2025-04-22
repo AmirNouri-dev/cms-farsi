@@ -4,6 +4,10 @@ import ErrorBox from "../ErrorBox/ErrorBox";
 import DetailsModal from "../DetailsModal/DetailsModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import EditModal from "../EditModal/EditModal";
+import { FcOk } from "react-icons/fc";
+import { FcCancel } from "react-icons/fc";
+import { FaQuestionCircle } from "react-icons/fa";
+
 export default function CommentsTable() {
   const [allComments, setAllComments] = useState([]);
   const [selectedCommentID, setSelectedCommentID] = useState(null);
@@ -11,44 +15,51 @@ export default function CommentsTable() {
   const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
+  const [isShowAcceptModal, setIsShowAcceptModal] = useState(false);
+  const [isShowRejectModal, setIsShowRejectModal] = useState(false);
 
   useEffect(() => {
-    getAllProducts();
+    getAllComments();
   }, []);
-
-  const getAllProducts = () => {
+  /*show all comments method */
+  const getAllComments = () => {
     fetch("http://localhost:8000/api/comments")
       .then((res) => res.json())
-      .then((data) => setAllComments(data))
+      .then((data) => {
+        setAllComments(data);
+        console.log(data);
+      })
       .catch((err) => setAllComments([]));
   };
-
+  /*show selected comment details modal method */
   const showComment = () => {
     setIsShowDetailsModal(true);
   };
-
+  /*close selected comment details modal method */
   const closeDetailsModal = () => {
     setIsShowDetailsModal(false);
   };
+  /*close selected comment delete modal method */
   const closeDeleteModal = () => {
     setIsShowDeleteModal(false);
   };
+  /*show selected comment delete modal method */
   const deleteComment = () => {
-    // let cid = selectedComment.id;
     fetch(`http://localhost:8000/api/comments/${selectedCommentID}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        getAllProducts();
+        getAllComments();
         closeDeleteModal();
       });
   };
-
+  /*close selected comment edit modal method */
   const closeEditModal = () => {
     setIsShowEditModal(false);
   };
+  /*show selected comment edit modal method */
   const editComment = () => {
     event.preventDefault();
     const newCommentBody = {
@@ -61,18 +72,50 @@ export default function CommentsTable() {
     })
       .then((res) => res.json())
       .then((data) => {
-        getAllProducts();
+        getAllComments();
         closeEditModal();
       });
   };
+  /*show selected comment accept modal method */
+  const acceptComment = () => {
+    fetch(`http://localhost:8000/api/comments/accept/${selectedCommentID}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("accept");
+        getAllComments();
+        closeAcceptModal();
+        console.log(data);
+      });
+  };
+  /*show selected comment reject modal method */
+  const rejectComment = () => {
+    fetch(`http://localhost:8000/api/comments/reject/${selectedCommentID}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("reject");
+        getAllComments();
+        closeRejectModal();
+      });
+  };
+  const closeAcceptModal = () => setIsShowAcceptModal(false);
+  const closeRejectModal = () => setIsShowRejectModal(false);
+
   return (
     <>
+      <h2 className="comments-title">لیست کامنت ها</h2>
       {allComments.length ? (
         <div className="cms-main">
           <div className="cms-table">
             <table>
               <thead>
                 <tr>
+                  <th>وضعیت</th>
                   <th>نام کاربر</th>
                   <th>نام محصول</th>
                   <th>نمایش کامنت</th>
@@ -84,6 +127,24 @@ export default function CommentsTable() {
               <tbody>
                 {allComments.map((comment) => (
                   <tr key={comment.id}>
+                    <td>
+                      {comment.isAccept === 1 ? (
+                        <div>
+                          <span>تایید شده</span>
+                          <FcOk />
+                        </div>
+                      ) : comment.isAccept === 0 ? (
+                        <div>
+                          <span>در انتظار</span>
+                          <FaQuestionCircle style={{ color: "orange" }} />
+                        </div>
+                      ) : comment.isAccept === -1 ? (
+                        <div>
+                          <span>رد شده</span>
+                          <FcCancel />
+                        </div>
+                      ) : null}
+                    </td>
                     <td>{comment.userID}</td>
                     <td>{comment.productID}</td>
                     <td>
@@ -118,7 +179,44 @@ export default function CommentsTable() {
                         حذف
                       </button>
                       <button>پاسخ</button>
-                      <button>تایید</button>
+                      {comment.isAccept === 1 ? (
+                        <button
+                          onClick={() => {
+                            setIsShowRejectModal(true);
+                            setSelectedCommentID(comment.id);
+                          }}
+                        >
+                          رد
+                        </button>
+                      ) : comment.isAccept === -1 ? (
+                        <button
+                          onClick={() => {
+                            setIsShowAcceptModal(true);
+                            setSelectedCommentID(comment.id);
+                          }}
+                        >
+                          تایید مجدد
+                        </button>
+                      ) : (
+                        <>
+                          <button
+                            onClick={() => {
+                              setIsShowAcceptModal(true);
+                              setSelectedCommentID(comment.id);
+                            }}
+                          >
+                            تایید
+                          </button>
+                          <button
+                            onClick={() => {
+                              setIsShowRejectModal(true);
+                              setSelectedCommentID(comment.id);
+                            }}
+                          >
+                            رد
+                          </button>
+                        </>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -151,6 +249,20 @@ export default function CommentsTable() {
             ></textarea>
           </div>
         </EditModal>
+      )}
+      {isShowAcceptModal && (
+        <DeleteModal
+          title={"آیا از تایید کامنت اطمینان دارید؟"}
+          submitAction={acceptComment}
+          cancelAction={closeAcceptModal}
+        />
+      )}
+      {isShowRejectModal && (
+        <DeleteModal
+          title={"آیا از رد کامنت اطمینان دارید؟"}
+          submitAction={rejectComment}
+          cancelAction={closeRejectModal}
+        />
       )}
     </>
   );
