@@ -25,7 +25,7 @@ export default function Products() {
   };
   return (
     <div>
-      <AddNewProduct />
+      <AddNewProduct getAllProducts={getAllProducts} />
       <ProductsTable
         allProducts={allProducts}
         getAllProducts={getAllProducts}

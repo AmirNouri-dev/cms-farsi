@@ -9,7 +9,7 @@ import { GiChart } from "react-icons/gi";
 import { FaRegImage } from "react-icons/fa";
 import { MdOutlineColorLens } from "react-icons/md";
 
-export default function AddNewProduct() {
+export default function AddNewProduct({ getAllProducts }) {
   const [newProductTitle, setNewProductTitle] = useState("");
   const [newProductPrice, setNewProductPrice] = useState("");
   const [newProductImg, setNewProductImg] = useState("");
@@ -29,12 +29,12 @@ export default function AddNewProduct() {
   };
   const newProductInfoss = {
     title: newProductTitle,
-    price: +newProductPrice,
-    count: +newProductCount,
+    price: newProductPrice,
+    count: newProductCount,
     img: newProductImg,
-    popularity: +newProductPopularity,
-    sale: +newProductSale,
-    colors: +newProductColors,
+    popularity: newProductPopularity,
+    sale: newProductSale,
+    colors: newProductColors,
   };
   const addNewProduct = (event) => {
     event.preventDefault();
@@ -48,6 +48,7 @@ export default function AddNewProduct() {
       .then((data) => {
         console.log("پاسخ خام", data);
         emptyInput();
+        getAllProducts();
         try {
           const json = JSON.parse(data);
           console.log("تبدیل شده به json", json);
