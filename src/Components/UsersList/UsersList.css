@@ -63,3 +63,9 @@
   align-items: center;
   column-gap: 10px;
 }
+.edit-products-form-group {
+  margin-top: 8px;
+}
+.edit-product-input {
+  padding: 5px !important;
+}

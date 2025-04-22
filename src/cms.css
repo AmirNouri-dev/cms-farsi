@@ -1,5 +1,6 @@
 .modal-parent {
   position: fixed;
+  overflow: scroll;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
