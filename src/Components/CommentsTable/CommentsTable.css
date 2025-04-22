@@ -1,56 +1,73 @@
-.cms-main {
-  margin-top: 20px;
-  padding: 20px;
-  border-radius: 5px;
-  background-color: var(--white);
-}
 .comments-title {
   font-size: 2rem;
+  margin-top: 60px;
+}
+.comments-main {
   margin-top: 30px;
+  margin-right: -20px;
+  background-color: var(--white);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 10px;
 }
-.cms-table {
-  width: 100%;
-  padding: 30px 20px 20px;
-
-  border-radius: 5px;
-}
-.cms-table thead {
+.comments-table {
+  background: unset;
   margin-top: 20px;
+  width: 100%;
 }
-.cms-table th,
-.cms-table td {
-  padding: 20px;
+.comments-table-heading-tr {
+  margin-top: 10px;
 }
-.cms-table th {
-  font-size: 1.1rem;
-}
-.cms-show-btn {
-  width: 100% !important;
-  font-size: 1rem !important;
-}
-.cms-main button {
-  display: flex;
-  justify-content: center;
+.comments-table-heading-tr,
+.comments-table-body-tr {
+  display: grid;
+  grid-template-columns: 70px 80px 100px 120px 100px 90px 400px;
+  column-gap: 10px;
+  text-align: center;
   align-items: center;
+  padding: 20px 40px 10px 40px;
+}
+.comments-table-body-tr-btn {
+  justify-content: flex-start !important;
+}
+.comments-table-body-tr button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--blue);
   color: var(--white);
+  width: 70px;
+  padding: 8px 10px;
+  font-size: 0.8rem;
   border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  width: 80px;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
 }
-
-.cms-table tbody td:nth-child(6) {
+.comments-table-body-tr button:hover {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+}
+.comments-table-body-th {
+  padding: 10px;
+}
+.users-table-body-td {
   display: flex;
+  padding: 10px;
   justify-content: center;
+  align-items: center;
   column-gap: 10px;
 }
+
 .comment-body-text {
   font-size: 1.1rem;
   max-width: 90%;

@@ -110,76 +110,102 @@ export default function CommentsTable() {
     <>
       <h2 className="comments-title">لیست کامنت ها</h2>
       {allComments.length ? (
-        <div className="cms-main">
-          <div className="cms-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>وضعیت</th>
-                  <th>نام کاربر</th>
-                  <th>نام محصول</th>
-                  <th>نمایش کامنت</th>
-                  <th>تاریخ ثبت</th>
-                  <th>ساعت ثبت</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {allComments.map((comment) => (
-                  <tr key={comment.id}>
-                    <td>
-                      {comment.isAccept === 1 ? (
-                        <div>
-                          <span>تایید شده</span>
-                          <FcOk />
-                        </div>
-                      ) : comment.isAccept === 0 ? (
-                        <div>
-                          <span>در انتظار</span>
-                          <FaQuestionCircle style={{ color: "orange" }} />
-                        </div>
-                      ) : comment.isAccept === -1 ? (
-                        <div>
-                          <span>رد شده</span>
-                          <FcCancel />
-                        </div>
-                      ) : null}
-                    </td>
-                    <td>{comment.userID}</td>
-                    <td>{comment.productID}</td>
-                    <td>
+        <div className="comments-main">
+          <table className="comments-table">
+            <thead>
+              <tr className="comments-table-heading-tr">
+                <th className="comments-table-body-th">وضعیت</th>
+                <th className="comments-table-body-th">نام کاربر</th>
+                <th className="comments-table-body-th">نام محصول</th>
+                <th className="comments-table-body-th">نمایش کامنت</th>
+                <th className="comments-table-body-th">تاریخ ثبت</th>
+                <th className="comments-table-body-th">ساعت ثبت</th>
+                <th className="comments-table-body-th"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {allComments.map((comment) => (
+                <tr key={comment.id} className="comments-table-body-tr">
+                  <td className="users-table-body-td">
+                    {comment.isAccept === 1 ? (
+                      <div>
+                        <span>تایید شده</span>
+                        <FcOk />
+                      </div>
+                    ) : comment.isAccept === 0 ? (
+                      <div>
+                        <span>در انتظار</span>
+                        <FaQuestionCircle style={{ color: "orange" }} />
+                      </div>
+                    ) : comment.isAccept === -1 ? (
+                      <div>
+                        <span>رد شده</span>
+                        <FcCancel />
+                      </div>
+                    ) : null}
+                  </td>
+                  <td className="users-table-body-td">{comment.userID}</td>
+                  <td className="users-table-body-td">{comment.productID}</td>
+                  <td className="users-table-body-td">
+                    <button
+                      className="cms-show-btn"
+                      onClick={() => {
+                        showComment();
+                        setSelectedCommentBody(comment.body);
+                      }}
+                    >
+                      دیدن متن
+                    </button>
+                  </td>
+                  <td className="users-table-body-td">{comment.date}</td>
+                  <td className="users-table-body-td">{comment.hour}</td>
+                  <td className="users-table-body-td comments-table-body-tr-btn">
+                    <button
+                      onClick={() => {
+                        setIsShowEditModal(true);
+                        setSelectedCommentID(comment.id);
+                        setSelectedCommentBody(comment.body);
+                      }}
+                    >
+                      ویرایش
+                    </button>
+                    <button
+                      onClick={() => {
+                        setIsShowDeleteModal(true);
+                        setSelectedCommentID(comment.id);
+                      }}
+                    >
+                      حذف
+                    </button>
+                    <button>پاسخ</button>
+                    {comment.isAccept === 1 ? (
                       <button
-                        className="cms-show-btn"
                         onClick={() => {
-                          showComment();
-                          setSelectedCommentBody(comment.body);
-                        }}
-                      >
-                        دیدن متن
-                      </button>
-                    </td>
-                    <td>{comment.date}</td>
-                    <td>{comment.hour}</td>
-                    <td>
-                      <button
-                        onClick={() => {
-                          setIsShowEditModal(true);
+                          setIsShowRejectModal(true);
                           setSelectedCommentID(comment.id);
-                          setSelectedCommentBody(comment.body);
                         }}
                       >
-                        ویرایش
+                        رد
                       </button>
+                    ) : comment.isAccept === -1 ? (
                       <button
                         onClick={() => {
-                          setIsShowDeleteModal(true);
+                          setIsShowAcceptModal(true);
                           setSelectedCommentID(comment.id);
                         }}
                       >
-                        حذف
+                        تایید مجدد
                       </button>
-                      <button>پاسخ</button>
-                      {comment.isAccept === 1 ? (
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => {
+                            setIsShowAcceptModal(true);
+                            setSelectedCommentID(comment.id);
+                          }}
+                        >
+                          تایید
+                        </button>
                         <button
                           onClick={() => {
                             setIsShowRejectModal(true);
@@ -188,41 +214,13 @@ export default function CommentsTable() {
                         >
                           رد
                         </button>
-                      ) : comment.isAccept === -1 ? (
-                        <button
-                          onClick={() => {
-                            setIsShowAcceptModal(true);
-                            setSelectedCommentID(comment.id);
-                          }}
-                        >
-                          تایید مجدد
-                        </button>
-                      ) : (
-                        <>
-                          <button
-                            onClick={() => {
-                              setIsShowAcceptModal(true);
-                              setSelectedCommentID(comment.id);
-                            }}
-                          >
-                            تایید
-                          </button>
-                          <button
-                            onClick={() => {
-                              setIsShowRejectModal(true);
-                              setSelectedCommentID(comment.id);
-                            }}
-                          >
-                            رد
-                          </button>
-                        </>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : (
         <ErrorBox msg="هیچ کامنتی یافت نشد !" />
