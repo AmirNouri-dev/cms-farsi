@@ -14,69 +14,40 @@ export default function Sidebar() {
     <div className="sidebar">
       <h1 className="sidebar-title">به داشبورد خود خوش آمدید</h1>
       <ul className="sidebar-links">
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? "li active" : "li")}
-            to="/"
-          >
-            <AiOutlineHome className="sidebar-icon" />
-            صفحه اصلی
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? "active li" : "li")}
-            to="/products"
-          >
-            <AiOutlineProduct className="sidebar-icon" />
-            محصولات
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? "active li" : "li")}
-            to="/comments"
-          >
-            <TfiCommentAlt className="sidebar-icon" />
-            کامنت ها
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? "active li" : "li")}
-            to="/users"
-          >
-            <FiUsers className="sidebar-icon" />
-            کاربران
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? "active li" : "li")}
-            to="/orders"
-          >
-            <BsBagCheck className="sidebar-icon" />
-            سفارشات
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? "active li" : "li")}
-            to="/offs"
-          >
-            <MdOutlineDiscount className="sidebar-icon" />
-            تخفیف ها
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? "active li" : "li")}
-            to="/statistics"
-          >
-            <FiBarChart2 className="sidebar-icon" />
-            آمار فروش
-          </NavLink>
-        </li>
+        <NavLink to="/">
+          <AiOutlineHome className="sidebar-icon" />
+          صفحه اصلی
+        </NavLink>
+
+        <NavLink to="/products">
+          <AiOutlineProduct className="sidebar-icon" />
+          محصولات
+        </NavLink>
+
+        <NavLink to="/comments">
+          <TfiCommentAlt className="sidebar-icon" />
+          کامنت ها
+        </NavLink>
+
+        <NavLink to="/users">
+          <FiUsers className="sidebar-icon" />
+          کاربران
+        </NavLink>
+
+        <NavLink to="/orders">
+          <BsBagCheck className="sidebar-icon" />
+          سفارشات
+        </NavLink>
+
+        <NavLink to="/offs">
+          <MdOutlineDiscount className="sidebar-icon" />
+          تخفیف ها
+        </NavLink>
+
+        <NavLink to="/statistics">
+          <FiBarChart2 className="sidebar-icon" />
+          آمار فروش
+        </NavLink>
       </ul>
     </div>
   );
