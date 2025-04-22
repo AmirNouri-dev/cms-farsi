@@ -7,7 +7,7 @@ import { FiUsers } from "react-icons/fi";
 import { BsBagCheck } from "react-icons/bs";
 import { MdOutlineDiscount } from "react-icons/md";
 import { FiBarChart2 } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Sidebar() {
   return (
@@ -15,46 +15,67 @@ export default function Sidebar() {
       <h1 className="sidebar-title">به داشبورد خود خوش آمدید</h1>
       <ul className="sidebar-links">
         <li>
-          <Link to="/">
+          <NavLink
+            className={({ isActive }) => (isActive ? "li active" : "li")}
+            to="/"
+          >
             <AiOutlineHome className="sidebar-icon" />
             صفحه اصلی
-          </Link>
+          </NavLink>
         </li>
         <li className="active">
-          <Link to="/products">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active li" : "li")}
+            to="/products"
+          >
             <AiOutlineProduct className="sidebar-icon" />
             محصولات
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/comments">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active li" : "li")}
+            to="/comments"
+          >
             <TfiCommentAlt className="sidebar-icon" />
             کامنت ها
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/users">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active li" : "li")}
+            to="/users"
+          >
             <FiUsers className="sidebar-icon" />
             کاربران
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/orders">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active li" : "li")}
+            to="/orders"
+          >
             <BsBagCheck className="sidebar-icon" />
             سفارشات
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/offs">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active li" : "li")}
+            to="/offs"
+          >
             <MdOutlineDiscount className="sidebar-icon" />
             تخفیف ها
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/statistics">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active li" : "li")}
+            to="/statistics"
+          >
             <FiBarChart2 className="sidebar-icon" />
             آمار فروش
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </div>
