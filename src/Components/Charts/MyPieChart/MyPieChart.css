@@ -1,0 +1,37 @@
+.pie-chart {
+  margin: 30px 20px;
+  padding: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 15px -10px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.pie-chart-title {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+.pie-chart-desc-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 60px;
+}
+.pie-chart-desc {
+  display: flex;
+  width: 50px;
+  align-items: center;
+  justify-content: space-between;
+}
+.pie-chart-desc-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+}

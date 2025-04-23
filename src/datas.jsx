@@ -49,6 +49,13 @@ const monthlySaleLineChartDatas = [
   },
 ];
 
+const pieChartDatas = [
+  { name: "Group A", value: 150 },
+  { name: "Group B", value: 100 },
+  { name: "Group C", value: 250 },
+  { name: "Group D", value: 500 },
+];
+
 const monthlyOrdersLineChartDatas = [
   {
     name: "فروردین",
@@ -99,4 +106,8 @@ const monthlyOrdersLineChartDatas = [
     تعداد: 255,
   },
 ];
-export { monthlySaleLineChartDatas, monthlyOrdersLineChartDatas };
+export {
+  monthlySaleLineChartDatas,
+  monthlyOrdersLineChartDatas,
+  pieChartDatas,
+};

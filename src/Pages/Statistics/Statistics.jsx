@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./Statistics.css";
 import ErrorBox from "../../Components/ErrorBox/ErrorBox";
 import MyLineChart from "../../Components/Charts/MyLineChart/MyLineChart";
+import MyPieChart from "../../Components/Charts/MyPieChart/MyPieChart";
 import {
   monthlySaleLineChartDatas,
   monthlyOrdersLineChartDatas,
+  pieChartDatas,
 } from "../../datas";
 
 export default function Statistics() {
@@ -14,6 +16,7 @@ export default function Statistics() {
   const [ordersLineChartDatas, setOrdersLinechartDatas] = useState(
     monthlyOrdersLineChartDatas
   );
+  const [pieChartDataTimes, setPieChartDataTime] = useState(pieChartDatas);
   return (
     <div>
       <ErrorBox msg="هیچ جدول آماری یافت نشد !" />
@@ -22,6 +25,11 @@ export default function Statistics() {
         title="فروش ماهانه"
         dataKey="فروش"
         type="monotone"
+      />
+      <MyPieChart
+        title="میانگین بازدید از سایت در ساعات مختلف"
+        data={pieChartDataTimes}
+        dataKey="value"
       />
       <MyLineChart
         data={ordersLineChartDatas}
