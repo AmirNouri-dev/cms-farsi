@@ -36,12 +36,12 @@ export default function MyBarChart({ title, data }) {
           <Bar
             dataKey="1403"
             fill="#8884d8"
-            activeBar={<Rectangle fill="pink" stroke="blue" />}
+            activeBar={<Rectangle fill="purple" stroke="black" />}
           />
           <Bar
             dataKey="1404"
-            fill="#82ca9d"
-            activeBar={<Rectangle fill="gold" stroke="purple" />}
+            fill="#ffc107"
+            activeBar={<Rectangle fill="gold" stroke="black" />}
           />
         </BarChart>
       </ResponsiveContainer>

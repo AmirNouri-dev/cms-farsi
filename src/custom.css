@@ -7,11 +7,11 @@
 :root {
   --white: #ffffff;
   --white-50: #f0f0f0;
-  --blue: #471aaa;
+  --blue: #423a8e;
   --blue-50: #391588;
   --gray: #858585;
   --gray-50: #f4f4f4;
-  --red-error: #ff4f4f;
+  --red-error: #ab2e3c;
 }
 /* #root {
   display: flex;
