@@ -5,7 +5,7 @@ import CommentsTable from "../../Components/CommentsTable/CommentsTable";
 export default function Comments() {
   return (
     <div>
-      <CommentsTable />
+      <CommentsTable title="لیست کامنت ها" />
     </div>
   );
 }

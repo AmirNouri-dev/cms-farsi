@@ -8,7 +8,7 @@ import { FcOk } from "react-icons/fc";
 import { FcCancel } from "react-icons/fc";
 import { FaQuestionCircle } from "react-icons/fa";
 
-export default function CommentsTable() {
+export default function CommentsTable({ title }) {
   const [allComments, setAllComments] = useState([]);
   const [selectedCommentID, setSelectedCommentID] = useState(null);
   const [selectedCommentBody, setSelectedCommentBody] = useState("");
@@ -108,7 +108,7 @@ export default function CommentsTable() {
 
   return (
     <>
-      <h2 className="comments-title">لیست کامنت ها</h2>
+      <h2 className="comments-title">{title}</h2>
       {allComments.length ? (
         <div className="comments-main">
           <table className="comments-table">

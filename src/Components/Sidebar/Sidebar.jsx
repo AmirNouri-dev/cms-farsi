@@ -46,7 +46,7 @@ export default function Sidebar() {
 
         <NavLink to="/statistics">
           <FiBarChart2 className="sidebar-icon" />
-          آمار فروش
+          جداول آماری
         </NavLink>
       </ul>
     </div>
