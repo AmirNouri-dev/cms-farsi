@@ -48,4 +48,55 @@ const monthlySaleLineChartDatas = [
     فروش: 255000000,
   },
 ];
-export { monthlySaleLineChartDatas };
+
+const monthlyOrdersLineChartDatas = [
+  {
+    name: "فروردین",
+    تعداد: 120,
+  },
+  {
+    name: "اردیبهشت",
+    تعداد: 189,
+  },
+  {
+    name: "خرداد",
+    تعداد: 135,
+  },
+  {
+    name: "تیر",
+    تعداد: 191,
+  },
+  {
+    name: "مرداد",
+    تعداد: 50,
+  },
+  {
+    name: "شهریور",
+    تعداد: 216,
+  },
+  {
+    name: "مهر",
+    تعداد: 87,
+  },
+  {
+    name: "آبان",
+    تعداد: 145,
+  },
+  {
+    name: "آذر",
+    تعداد: 178,
+  },
+  {
+    name: "دی",
+    تعداد: 200,
+  },
+  {
+    name: "بهمن",
+    تعداد: 180,
+  },
+  {
+    name: "اسفند",
+    تعداد: 255,
+  },
+];
+export { monthlySaleLineChartDatas, monthlyOrdersLineChartDatas };
