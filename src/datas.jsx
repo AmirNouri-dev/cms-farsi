@@ -106,8 +106,48 @@ const monthlyOrdersLineChartDatas = [
     تعداد: 255,
   },
 ];
+const barChartdatas = [
+  {
+    name: "فروردین",
+    1403: 4000,
+    1404: 2400,
+    amt: 2400,
+  },
+  {
+    name: "اردیبهشت",
+    1403: 3000,
+    1404: 1398,
+    amt: 2210,
+  },
+  {
+    name: "خرداد",
+    1403: 2000,
+    1404: 9800,
+    amt: 2290,
+  },
+  {
+    name: "تیر",
+    1403: 2780,
+    1404: 3908,
+    amt: 2000,
+  },
+  {
+    name: "مرداد",
+    1403: 1890,
+    1404: 4800,
+    amt: 2181,
+  },
+  {
+    name: "شهریور",
+    1403: 2390,
+    1404: 3800,
+    amt: 2500,
+  },
+];
+
 export {
   monthlySaleLineChartDatas,
   monthlyOrdersLineChartDatas,
   pieChartDatas,
+  barChartdatas,
 };
