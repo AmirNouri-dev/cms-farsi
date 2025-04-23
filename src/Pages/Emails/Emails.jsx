@@ -14,7 +14,7 @@ export default function Emails() {
           از ثبت‌نام شما متشکریم! حساب کاربری شما با موفقیت ایجاد شد. برای ورود
           به داشبورد روی دکمه زیر کلیک کنید.
         </p>
-        <a className="email-button" href="https://yourwebsite.com">
+        <a className="email-button" href="">
           ورود به داشبورد
         </a>
       </div>
