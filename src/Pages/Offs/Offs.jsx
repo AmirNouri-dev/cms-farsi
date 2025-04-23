@@ -1,10 +1,10 @@
 import React from "react";
 import "./Offs.css";
-import ErrorBox from "../../Components/ErrorBox/ErrorBox";
+import OffCodesTable from "../../Components/OffCodesTable/OffCodesTable";
 export default function Offs() {
   return (
     <div>
-      <ErrorBox msg="هیچ کد تخفیفی یافت نشد !" />
+      <OffCodesTable />
     </div>
   );
 }

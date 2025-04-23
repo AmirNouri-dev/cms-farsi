@@ -1,0 +1,107 @@
+.Offs-title {
+  font-size: 2rem;
+  margin-top: 60px;
+}
+.Offs-main {
+  margin-top: 30px;
+  margin-right: -20px;
+  background-color: var(--white);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 10px;
+}
+.Offs-table {
+  background: unset;
+  margin-top: 20px;
+  width: 100%;
+}
+.Offs-table-heading-tr {
+  margin-top: 10px;
+}
+.Offs-table-heading-tr,
+.Offs-table-body-tr {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 120px 500px;
+  column-gap: 10px;
+  text-align: center;
+  align-items: center;
+  padding: 20px 40px 10px 40px;
+}
+.Offs-table-body-tr-btn {
+  justify-content: flex-start !important;
+}
+.Offs-table-body-tr button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue);
+  color: var(--white);
+  width: 90px;
+  padding: 8px 10px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+.Offs-table-body-tr button:hover {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+}
+.Offs-table-body-th {
+  padding: 10px;
+}
+.Off-table-body-td {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.Off-body-text {
+  font-size: 1.1rem;
+
+  margin-top: 20px;
+  align-self: center;
+  outline: none;
+  border: 1px solid var(--blue);
+}
+.edit-Offs-form-group {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  background-color: var(--gray-50);
+  margin-top: 25px;
+  column-gap: 10px;
+  border-radius: 8px;
+  padding: 4px 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+.edit-Offs-form-group span {
+  font-size: 1.2rem;
+  width: 50%;
+  color: var(--gray);
+  display: flex;
+}
+.edit-Off-input {
+  background: unset;
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 100%;
+  font-size: 1.1rem;
+}
