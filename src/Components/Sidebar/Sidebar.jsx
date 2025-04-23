@@ -7,6 +7,8 @@ import { FiUsers } from "react-icons/fi";
 import { BsBagCheck } from "react-icons/bs";
 import { MdOutlineDiscount } from "react-icons/md";
 import { FiBarChart2 } from "react-icons/fi";
+import { AiOutlineMail } from "react-icons/ai";
+
 import { Link, NavLink } from "react-router-dom";
 
 export default function Sidebar() {
@@ -47,6 +49,10 @@ export default function Sidebar() {
         <NavLink to="/statistics">
           <FiBarChart2 className="sidebar-icon" />
           جداول آماری
+        </NavLink>
+        <NavLink to="/emails">
+          <AiOutlineMail className="sidebar-icon" />
+          ایمیل ها
         </NavLink>
       </ul>
     </div>
